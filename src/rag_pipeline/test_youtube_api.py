@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from pathlib import Path
 from datetime import datetime, timedelta, timezone
-import os
+import os #utile per variabili di ambiente e operazioni di sistema
 import sys
 
 try:
@@ -41,13 +41,14 @@ params = {
     "part": "snippet,id",
     "order": "date",
     "type": "video",
+    "eventType": "completed",
     "publishedAfter": published_after,
     "maxResults": 10,
 }
 
-resp = requests.get("https://www.googleapis.com/youtube/v3/search", params=params, timeout=30)
-resp.raise_for_status()
-data = resp.json()
+response = requests.get("https://www.googleapis.com/youtube/v3/search", params=params, timeout=30)
+response.raise_for_status() # lancia un'eccezione automatica se la risposta HTTP ha status 4xx o 5xx
+data = response.json()
 
 items = data.get("items", [])
 print(f"OK: returned {len(items)} videos since {published_after}")
