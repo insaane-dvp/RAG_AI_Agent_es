@@ -107,7 +107,7 @@ Implementare una pipeline RAG automatizzata per estrarre video YouTube da un can
        title TEXT,
        published_at TIMESTAMPTZ,
        url TEXT,
-       processed_at TIMESTAMPTZ DEFAULT NOW()
+       processed_at      DEFAULT NOW()
      );
      
      CREATE TABLE transcripts (
@@ -128,10 +128,10 @@ Implementare una pipeline RAG automatizzata per estrarre video YouTube da un can
        tokens INT,
        embedding vector(1536),  -- pgvector
        created_at TIMESTAMPTZ DEFAULT NOW()
-     );
+     ); 
      
      CREATE INDEX ON chunks USING hnsw (embedding vector_cosine_ops);
-     ```
+     ```  
 
 ### Phase 2: Core Components
 
