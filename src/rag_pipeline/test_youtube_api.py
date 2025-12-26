@@ -40,8 +40,8 @@ params = {
     "channelId": CHANNEL_ID,
     "part": "snippet,id",
     "order": "date",
-    "type": "video",
-    "eventType": "completed",
+    "type": "video",  # limita a video (esclude playlist/canali)
+    "eventType": "completed",  # esclude live/upcoming, prende solo VOD pubblicati
     "publishedAfter": published_after,
     "maxResults": 10,
 }
