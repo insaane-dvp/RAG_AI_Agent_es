@@ -7,7 +7,7 @@ class Video(BaseModel):
     """Validazione dei metadata relativi ai video YouTube processati dall'agente AI."""
 
     IDvideo: str = Field(..., description = "ID video")
-    name : str = Field(..., description = "Nome del video")  # Nome associato dall'agente AI
+    title : str = Field(..., description = "Nome del video")  # Nome associato dall'agente AI
     summary : str = Field(default = "", description = "Riassunto del video fatto dall'agente dopo la trascrizione")
     IDChannel: str = Field(..., description = "ID canale Youtube") # Per ora tutto uguale essendo l'agente su un solo canale
     publishedAt: datetime = Field(..., description = "Data di pubblicazione del video")
@@ -33,8 +33,8 @@ class Video(BaseModel):
                 raise ValueError("ID del video non valido")
             return value
         
-        @validator("name")
-        def name_validation(cls, value) -> str:
+        @validator("title")
+        def title_validation(cls, value) -> str:
             """Controllo che il nome non sia vuoto"""
             value = value.strip()
             if not value :
